@@ -8,7 +8,7 @@ def main():
     pattern1 = r'(?P<publisherlocation>\w+)(\s:\s)(?P<publishername>\w+(.*?)),(\s)*(?P<publisheryear>\d+)*'
     df_col1 = df['Column1'].str.extract(pattern1, flags=re.I)
     df1 = df_col1[['publishername', 'publisherlocation', 'publisheryear']]
-    pattern2 = r'(\d{4},\s)?((vol.|t.|Vol.|.vol.|T.)\s(?P<vol>\d+))*(,\s)*((iss.|nr|no.|No.|num.|Nr|Issue)\s(?P<no>\d+))*((s.\s|S.\s)(?P<pagesinrange>\d+-\d+))*((nr\sart.\s)(?P<articleno>[a-z]\d+))*'
+    pattern2 = r'(\d{4},\s)?((vol.|t.|Vol.|.vol.|T.)\s(?P<vol>\d+))*(,\s)*((iss.|nr|no.|No.|num.|Nr|Issue)\s(?P<no>\d+))*(\s*)((s.\s|S.\s)(?P<pagesinrange>\d+-\d+))*((nr\sart.\s)(?P<articleno>[a-z]\d+))*'
     df_col2 = df['Column2'].str.extract(pattern2, flags=re.I)
     df2 = df_col2[['no', 'vol', 'articleno', 'pagesinrange']]
     pd.concat([df2, df1], axis=1).to_csv('output.csv', header=False, index=False)
