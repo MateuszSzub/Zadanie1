@@ -5,7 +5,7 @@ import numpy as np
 
 class TestOperations(unittest.TestCase):
     def setUp(self):
-        global df1, df2
+        global df1
         df1 = pd.read_csv('output.csv', header=None, delimiter=',')
     def test_dataFrame_1(self):
         data = {0: 1.0, 1: 9.0, 2: np.nan, 3: None, 4: 'Varazdin Development and Entrepreneurship Agency',5: 'Varazdin', 6: 2019.0}
